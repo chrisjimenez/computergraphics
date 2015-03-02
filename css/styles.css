@@ -1,0 +1,61 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
+
+html, body {
+  height: 100%;
+  font-family: Quicksand;
+}
+
+canvas {
+  display: block;
+  margin:auto;
+}
+
+#canvas-container {
+  margin-left:auto;
+  padding: 3em;
+}
+
+.navbar-toggle {
+  float: left;
+  margin-left: 15px;
+}
+
+.navmenu {
+  z-index: 1;
+}
+
+.canvas {
+  position: relative;
+  left: 0;
+  z-index: 2;
+  min-height: 100%;
+  padding: 50px 0 0 0;
+  background: #303030;
+  margin: auto;
+  color: white;
+}
+
+@media (min-width: 0) {
+  .navbar-toggle {
+    display: block; /* force showing the toggle */
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding: 0;
+  }
+  .navbar {
+    right: auto;
+    background: none;
+    border: none;
+  }
+  .canvas {
+    padding: 0;
+  }
+}
+
+.container {
+    padding:5em;
+
+ }

@@ -1,0 +1,103 @@
+<!---
+  By: Chris Jimenez
+  
+  Site for CG assignments.
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic Page Needs
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Specific metas 
+    –––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- LIBS 
+    –––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src = "../../js/jquery-1.11.2.min.js"></script>
+    <script src = "../../js/bootstrap.min.js"></script>
+    <script src = "../../js/jasny-bootstrap.min.js"></script>
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src ="../../js/gl.js"></script>
+    <script src = "proj4.js"></script>    
+    
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel = "stylesheet" href = "../../css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "../../css/jasny-bootstrap.min.css">
+    <link rel = "stylesheet" href = "../../css/styles.css">
+
+    <title>Chris Jimenez | Computer Graphics Coursework</title>
+  </head>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <body>
+    <div class="navmenu navmenu-default navmenu-fixed-left">
+      <a class="navmenu-brand" href="index.html">Computer Graphics Coursework</a>
+      <ul class="nav navmenu-nav">
+        <li><a href="../../projs/proj1/proj1.html">Using GLSL to Write WebGL Shaders</a></li>
+        <li><a href="../../projs/proj2/proj2.html">Using GLSL to Write WebGL Shaders part 2</a></li>
+        <li><a href="../../projs/proj3/proj3.html">Implementing a Ray Tracer</a></li>
+        <li><a href="../../projs/proj4/proj4.html">Implementing a Ray Tracer part 2</a></li>
+        <li><a href="../../projs/proj5/proj5.html">Implementing the Phong Reflectance Algorithm</a></li>
+        <li><a href="../../projs/proj6/proj6.html">Implementing the Phong Reflectance Algorithm with Ray Reflectance & Background Gradient</a></li>
+        <li><a href="../../projs/proj7/proj7.html">Playing with the HTML5 Canvas</a></li>
+        <li class="dropdown">
+          <a href="../../../projs/proj8/legs/legs.html" class="dropdown-toggle" data-toggle="dropdown">Using Matrix Operations on the HTML5 Canvas<b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="../../projs/proj8/legs/legs.html">Walking Legs Animation</a></li>
+            <li><a href="../../projs/proj8/globe/globe.html">Dancing Globe</a></li>
+            <li><a href="../../projs/proj8/doughnut/doughnut.html">Weird Doughnut Jellyfish</a></li>
+          </ul>
+        </li>
+        <li><a href="../../projs/proj9/proj9.html">Creating a Story Using the HTML5 Canvas</a></li>
+        <li class="dropdown">
+          <a href="../../../projs/proj8/legs/legs.html" class="dropdown-toggle" data-toggle="dropdown">Using a List of Vertices and Triangular Faces to Draw 3D Shapes<b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="../../projs/proj10/cube/cube.html">Cube</a></li>
+            <li><a href="../../projs/proj10/octahedron/octahedron.html">Octahedron</a></li>
+            <li><a href="../../projs/proj10/cylinder/cylinder.html">Cylinder</a></li>
+            <li><a href="../../projs/proj10/sphere/sphere.html">Sphere</a></li>
+            <li><a href="../../projs/proj10/torus/torus.html">Torus</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="canvas">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="container">
+        <div style = "text-align:center"class="page-header">
+          <h1>Implementing a Ray Tracer part 2</h1>
+        </div>
+
+        <div id = "canvas-container">
+          <canvas id="proj4" width="640" height="640" ></canvas>
+        </div>
+
+        <p>
+          For this assignment, I passed the sphere coordinates and their corresponding colors using arrays. This was simply an assignment to play with the functionality. This time, there are 4 spheres instead of 2 spheres from the previous assignment. The farther away they're from the middle of the canvas, the more distorted they became, as seen with the pink sphere.
+        </p>
+
+      </div><!-- /.container -->
+    </div>
+    
+  </body>
+  <!-- End of Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– --> 
+</html>
+
