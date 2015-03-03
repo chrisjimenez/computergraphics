@@ -18,11 +18,41 @@
    Have fun with it!!
 ******************************************************************/
 
-// DISTANCE OF CAMERA ALONG Z AXIS.
-var fl = 6.0; 
+/**
+* Draw curve given C array.
+*/
+function drawCurve(C) {
+   g.beginPath();
+   g.fillStyle = 'rgb(100, 100, 0)';
+   for (var i = 0 ; i < C.length ; i++)
+      if (i == 0)
+    moveTo(C[i]);
+      else
+    lineTo(C[i]);
+   g.stroke();
+   g.fill();
+   g.closePath();
+}
+
+function viewport(p) {
+   return [ w/2 * p[0] + w/2, h/2 - p[1] * w/2 ];
+}
+
+function moveTo(p) {
+   var q = m.transform(p);  // APPLY 3D MATRIX TRANFORMATION
+   var xy = viewport(q);    // APPLY VIEWPORT TRANSFORM
+   g.moveTo(xy[0], xy[1]);
+}
+
+function lineTo(p) {
+   var q = m.transform(p);  // APPLY 3D MATRIX TRANFORMATION
+   var xy = viewport(q);    // APPLY VIEWPORT TRANSFORM
+   g.lineTo(xy[0], xy[1]);
+}
+
 
 /**
-* Draw xyz axes.
+* Draw XYZ axes.
 */
 function drawAxes() {
    g.strokeStyle = 'rgb(255,0,0)';
@@ -44,111 +74,44 @@ function drawAxes() {
    g.stroke();
 }
 
-/**
-* COmpute the area of the polygon
-*/
-function computeArea(P) {
-  var area = 0;
-  for (var i = 0 ; i < P.length ; i++) {
-    var j = (i + 1) % P.length;
-    var a = P[i];
-    var b = P[j]; 
 
-    area += (a[0] - b[0]) * (a[1] + b[1]);
-  }
+function pointOnGlobe(u, v) {
+   var phi = -Math.PI/2 + Math.PI * v;
+   var theta = 2 * Math.PI * u;
 
-  return area / 2;
+   return [    Math.cos(phi) * Math.cos(theta),
+               Math.cos(phi) * Math.sin(theta),
+               Math.sin(phi) ];
 }
 
-/**
-* MATRICES DON'T WORK WITH VERTICES, SO WE NEED A WRAPPER FUNCTION.
-*/
-function transform(m, p) {
-  var q = m.transform([ p.x, p.y, p.z ]);
-  return new Vertex(q[0], q[1], q[2]);
-}
 
 /**
-* Procedural displacement texture.
+* Build a parametric 3D shape, given a parametric function func
 */
-function blobby(x, y, z) {
-  return .1 * Math.sin(10*x) * Math.sin(10*y) * Math.sin(10*z + 5 * time);
+function makeShape(nu, nv, func, extra) {
+   var globe = [];
+   for (var j = 0 ; j <= nv ; j++) {
+      var v = j / nv;
+      globe.push([]);
+      for (var i = 0 ; i <= nu ; i++) {
+         var u = i / nu;
+         var p = func([u, v], extra);
+         globe[j].push(p);
+      }
+   }
+   return globe;
 }
 
 /**
-* Draw curve on the 2D canvas.
+* Render a parametric shape as a collection of four sided polygon.
 */
-function drawCurve(C) {
-  g.beginPath();
-  for (var i = 0 ; i < C.length ; i++)
-     if (i == 0)
-        moveTo(C[i]);
-     else
-        lineTo(C[i]);
-  g.stroke();
-}
-
-/**
-* VIEWPORT CONVERTS FROM 3D COORDS TO 2D CANVAS PIXELS.
-*/
-function viewport(p) {
-  var x = p.x;
-  var y = p.y;
-  var z = p.z;
-
-  // APPLY PERSPECTIVE
-  z = fl / (fl - z);
-  x *= z;
-  y *= z;
-
-  return [ w/2 * x + w/2, h/2 - y * w/2 ];
-}
-
-function moveTo(p) {
-  var q = transform(m, p);  // APPLY 3D MATRIX TRANFORMATION
-  var xy = viewport(q);    // APPLY VIEWPORT TRANSFORM
-  g.moveTo(xy[0], xy[1]);
-}
-
-function lineTo(p) {
-  var q = transform(m, p);  // APPLY 3D MATRIX TRANFORMATION
-  var xy = viewport(q);    // APPLY VIEWPORT TRANSFORM
-  g.lineTo(xy[0], xy[1]);
-}
-
-// INFLATE THE SHAPE.
-function inflate(p) {
-  var x = p.x, y = p.y, z = p.z;
-  var r = Math.sqrt(x * x + y * y + z * z);
-  return new Vertex(p.x / r, p.y / r, p.z / r);
-}
-
-/**
-* RETURN A NEW VERTEX WHICH IS THE MIDPOINT OF TWO GIVEN VERTICES.
-*/
-function midpoint(a, b) {
-   return new Vertex( (a.x + b.x) / 2, (a.y + b.y) / 2, (a.z + b.z) / 2 );
-}
-
-/**
-* SUBDIVIDE A TRIANGLE, RECURSIVELY.
-*/
-function subdivide(tri, nLevels) {
-  var a = tri[0];
-  var b = tri[1];
-  var c = tri[2];
-
-  //DECREASE THE LEVEL AND CHECK IF IT IS LESS THAN 0
-  if (--nLevels < 0) {
-    renderTriangle( [ inflate(a), inflate(b), inflate(c) ]);
-  }else{
-    var d = midpoint(a, b);
-    var e = midpoint(b, c);
-    var f = midpoint(c, a);
-
-    subdivide([a,d,f], nLevels);
-    subdivide([d,b,e], nLevels);
-    subdivide([c,f,e], nLevels);
-    subdivide([d,e,f], nLevels);
-  }
+function renderShape(shape) {
+   var nj = shape.length;
+   var ni = shape[0].length;
+   for (var j = 0 ; j < nj-1 ; j++)
+      for (var i = 0 ; i < ni-1 ; i++)
+    drawCurve([ shape[j    ][i    ],
+                shape[j + 1][i    ],
+                shape[j + 1][i + 1],
+                shape[j    ][i + 1] ]);
 }
