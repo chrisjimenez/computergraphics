@@ -18,6 +18,7 @@
 *************************************************************************/
 
 var w, h, g;
+var m = new Matrix4x4();
 
 // height of sidewalk and grass, sky ending
 var height = 94;
