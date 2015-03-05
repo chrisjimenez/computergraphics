@@ -11,10 +11,6 @@
 //	-scale(a,b,c)
 
 
-
-/*************************************
-	CONSTRUCTOR FUNCTION
-*************************************/
 function Matrix4x4 () {
 
 	// CREATE MATRIX...
@@ -71,9 +67,6 @@ function Matrix4x4 () {
 
     	return resultMatrix;
 	}
-
-
-
 
 
 	/*****************************************
