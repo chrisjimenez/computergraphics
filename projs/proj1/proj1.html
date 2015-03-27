@@ -1,21 +1,20 @@
+<!DOCTYPE html>
 <!---
   By: Chris Jimenez
   
   Site for CG assignments.
   project 1
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-<!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
   <head>
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset = "utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
 
     <!-- Mobile Specific metas 
     –––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
 
     <!-- LIBS 
     –––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -25,8 +24,8 @@
 
     <!-- JS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script src ="../../js/gl.js"></script>
-    <script src = "proj1.js" ></script>    
+    <script src = "../../js/gl.js"></script>
+    <script src = "proj1.js"></script>    
     
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -43,64 +42,64 @@
     <div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="../../index.html">Computer Graphics Coursework</a>
       <ul class="nav navmenu-nav">
-        <li><a href="../../projs/proj1/proj1.html">Using GLSL to Write WebGL Shaders</a></li>
-        <li><a href="../../projs/proj2/proj2.html">Using GLSL to Write WebGL Shaders part 2</a></li>
-        <li><a href="../../projs/proj3/proj3.html">Implementing a Ray Tracer</a></li>
-        <li><a href="../../projs/proj4/proj4.html">Implementing a Ray Tracer part 2</a></li>
-        <li><a href="../../projs/proj5/proj5.html">Implementing the Phong Reflectance Algorithm</a></li>
-        <li><a href="../../projs/proj6/proj6.html">Implementing the Phong Reflectance Algorithm with Ray Reflectance & Background Gradient</a></li>
+        <li><a href = "../../projs/proj1/proj1.html">Using GLSL to Write WebGL Shaders</a></li>
+        <li><a href = "../../projs/proj2/proj2.html">Using GLSL to Write WebGL Shaders part 2</a></li>
+        <li><a href = "../../projs/proj3/proj3.html">Implementing a Ray Tracer</a></li>
+        <li><a href = "../../projs/proj4/proj4.html">Implementing a Ray Tracer part 2</a></li>
+        <li><a href = "../../projs/proj5/proj5.html">Implementing the Phong Reflectance Algorithm</a></li>
+        <li><a href = "../../projs/proj6/proj6.html">Implementing the Phong Reflectance Algorithm with Ray Reflectance & Background Gradient</a></li>
         <li><a href="../../projs/proj7/proj7.html">Playing with the HTML5 Canvas</a></li>
-        <li class="dropdown">
-          <a href="../../../projs/proj8/legs/legs.html" class="dropdown-toggle" data-toggle="dropdown">Using Matrix Operations on the HTML5 Canvas<b class="caret"></b></a>
-          <ul class="dropdown-menu navmenu-nav">
-            <li><a href="../../projs/proj8/legs/legs.html">Walking Legs Animation</a></li>
-            <li><a href="../../projs/proj8/globe/globe.html">Dancing Globe</a></li>
-            <li><a href="../../projs/proj8/doughnut/doughnut.html">Weird Doughnut Jellyfish</a></li>
+        <li class = "dropdown">
+          <a href = "../../../projs/proj8/legs/legs.html" class = "dropdown-toggle" data-toggle = "dropdown">Using Matrix Operations on the HTML5 Canvas<b class = "caret"></b></a>
+          <ul class = "dropdown-menu navmenu-nav">
+            <li><a href = "../../projs/proj8/legs/legs.html">Walking Legs Animation</a></li>
+            <li><a href = "../../projs/proj8/globe/globe.html">Dancing Globe</a></li>
+            <li><a href = "../../projs/proj8/doughnut/doughnut.html">Weird Doughnut Jellyfish</a></li>
           </ul>
         </li>
-        <li><a href="../../projs/proj9/proj9.html">Creating a Story Using the HTML5 Canvas</a></li>
-        <li class="dropdown">
-          <a href="../../../projs/proj8/legs/legs.html" class="dropdown-toggle" data-toggle="dropdown">Using a List of Vertices and Triangular Faces to Draw 3D Shapes<b class="caret"></b></a>
+        <li><a href = "../../projs/proj9/proj9.html">Creating a Story Using the HTML5 Canvas</a></li>
+        <li class = "dropdown">
+          <a href = "../../../projs/proj8/legs/legs.html" class = "dropdown-toggle" data-toggle = "dropdown">Using a List of Vertices and Triangular Faces to Draw 3D Shapes<b class="caret"></b></a>
           <ul class="dropdown-menu navmenu-nav">
-            <li><a href="../../projs/proj10/cube/cube.html">Cube</a></li>
-            <li><a href="../../projs/proj10/octahedron/octahedron.html">Octahedron</a></li>
-            <li><a href="../../projs/proj10/cylinder/cylinder.html">Cylinder</a></li>
-            <li><a href="../../projs/proj10/sphere/sphere.html">Sphere</a></li>
-            <li><a href="../../projs/proj10/torus/torus.html">Torus</a></li>
+            <li><a href = "../../projs/proj10/cube/cube.html">Cube</a></li>
+            <li><a href = "../../projs/proj10/octahedron/octahedron.html">Octahedron</a></li>
+            <li><a href = "../../projs/proj10/cylinder/cylinder.html">Cylinder</a></li>
+            <li><a href = "../../projs/proj10/sphere/sphere.html">Sphere</a></li>
+            <li><a href = "../../projs/proj10/torus/torus.html">Torus</a></li>
           </ul>
         </li>
       </ul>
     </div>
 
-    <div class="canvas">
-      <div class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+    <div class = "canvas">
+      <div class = "navbar navbar-default navbar-fixed-top">
+        <button type = "button" class="navbar-toggle" data-toggle = "offcanvas" data-recalc = "false" data-target=".navmenu" data-canvas=".canvas">
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
         </button>
       </div>
 
-      <div class="container">
+      <div class = "container">
         <div style = "text-align:center"class="page-header">
           <h1>Using GLSL to Write WebGL Shaders</h1>
         </div>
 
         <div id = "canvas-container">
-          <canvas id="proj1" width="640" height="640" ></canvas>
+          <canvas id = "proj1" width = "640" height = "640"></canvas>
         </div>
 
         <p>
           Given the sample code from class, which could be found <a href="http://mrl.nyu.edu/~perlin/courses/fall2014/code2.zip">here</a>, I left the vector shader alone and only wrote code for the fragment shader. Firstly, I used the built in gl_FragCoord variable to get the x and y values of the current pixel/fragment location. Then I created a variable x which is the sum of the x component of the mouse location and current pixel/fragment location. I did the same for the variable y.
         </p>
 		
-		<p>
-		  Once I got the x and y values, I squared them and used the sin() function and mod() function to create a looping effect. Then I set gl_FragColor to the result. The result is what appears to be a bunch of small circles pulsating. As you step back, you could see that these smaller circles actually make up four larger circles.
-		</p>
+    		<p>
+    		  Once I got the x and y values, I squared them and used the sin() function and mod() function to create a looping effect. Then I set gl_FragColor to the result. The result is what appears to be a bunch of small circles pulsating. As you step back, you could see that these smaller circles actually make up four larger circles.
+    		</p>
 
-		<p>
-		  The pulsating effect comes from using the mod() function with u_time(the current time) as my dividend. I noticed that when I increased the divisor, the pulsating effect increases, which is pretty cool.
-		</p>
+    		<p>
+    		  The pulsating effect comes from using the mod() function with u_time(the current time) as my dividend. I noticed that when I increased the divisor, the pulsating effect increases, which is pretty cool.
+    		</p>
 
       </div><!-- /.container -->
     </div>
@@ -109,4 +108,3 @@
   <!-- End of Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– --> 
 </html>
-

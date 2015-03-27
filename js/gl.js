@@ -4,8 +4,6 @@
 *  Contains a couple functions to set up WebGL
 *********************************************************************/
 
-
-
 /**
 *  Wait 100 milliseconds after the page loads before starting gl.
 */
@@ -135,4 +133,3 @@ var startTime = (new Date()).getTime();
 
 // Variable "time" contains the time in seconds since the page loaded.
 var time = 0;
-
