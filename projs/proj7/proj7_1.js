@@ -19,13 +19,16 @@
 var mx = 0;
 var my = 0;
 
+/**
+* Gets called repeatedly.
+*/
 proj7_1.animate = function(g) {
 
-  //  GET THE CANVAS WIDTH AND HEIGHT
+  //  Get canvas width and height
   var w = g.canvas.width;
   var h = g.canvas.height;
       
-  //  FILL THE BACKGROUND WITH A SOLID COLOR
+  // background
   g.fillStyle = 'rgb(100,100,100)';
   g.beginPath();
   g.moveTo(0,0);
@@ -47,15 +50,15 @@ proj7_1.animate = function(g) {
   g.lineTo(bgSizeDif,h-bgSizeDif);
   g.fill();
 
-  // SET RADIUS AND TIME.
+  // set radius and time
   var radius = 10;
   var t = 0.5 + 2.5 * Math.sin(time);
   var k0 = 5 * t;
   
-  //  SPACE BETWEEN EACH ROD
+  // space between each rod
   var step = 7;
-	
-  //  LOOP THROUGH WHOLE CANVAS
+  
+  // loop through whole cnavas
   for(var i = bgSizeDif; i < w - bgSizeDif; i = i + step){
     for(var j = bgSizeDif; j < h- bgSizeDif; j = j + step){
       g.fillStyle = 'rgb(255,0,0)';
@@ -63,12 +66,12 @@ proj7_1.animate = function(g) {
       g.moveTo(i, j);
 
       for (var k = k0 ; k <= k0 + 1 ; k++) {
-       	var x = radius * Math.cos(Math.atan((mx-i)/(my-j)) * k/2);
-       	var y = radius * Math.sin(Math.atan((mx-i)/(my-j)) * k/2);
-       	g.lineTo(i + x, j + y);
+        var x = radius * Math.cos(Math.atan((mx-i)/(my-j)) * k/2);
+        var y = radius * Math.sin(Math.atan((mx-i)/(my-j)) * k/2);
+        g.lineTo(i + x, j + y);
       }
       g.fill();
-    }		
+    }   
   } 
 }
    
@@ -80,7 +83,7 @@ function click(e) {
   mx = pos.x;
   my = pos.y;
 }
-	
+  
 // add the event listener
 window.addEventListener('mousedown', click, false);
 

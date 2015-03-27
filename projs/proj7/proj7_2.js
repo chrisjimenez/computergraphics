@@ -57,7 +57,7 @@ proj7_2.animate = function(g) {
 
   //  space between each circle
   var step = 10;
-	
+  
   for(var i = bgSizeDif; i < w - bgSizeDif; i = i+step){
     for(var j = bgSizeDif; j < h - bgSizeDif; j = j+step){
 
@@ -76,5 +76,3 @@ proj7_2.animate = function(g) {
     }
   }
 }
-
-
