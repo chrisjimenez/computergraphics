@@ -22,9 +22,11 @@
 
 var w, h, g;
 
+// create matrix object
 var m = new Matrix4x4();
 
-var fl = 6.0; // DISTANCE OF CAMERA ALONG Z AXIS.
+// DISTANCE OF CAMERA ALONG Z AXIS.
+var fl = 6.0; 
 
 /**
 * Vertex object
@@ -87,7 +89,7 @@ myCanvas.animate = function(_g) {
   g.fill();
 
 
-  // sraw thin lines
+  // draw thin lines
   g.lineWidth = .5;
   g.strokeStyle = 'rgb(106, 39, 122)';
 

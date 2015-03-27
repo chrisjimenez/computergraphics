@@ -1,23 +1,22 @@
-/*
-   By: Chris Jimenez
-   Assignment 9 submission
-   Using Matrix Operations
-   doughnut.js
- 
-   ASSIGNMENT 9
-   Your assignment, due by class on Thursday November 13, is to use your fully 
-   function implementation of matrices in place of the non-functioning one that 
-   is in the folder now.
-*/
-
-
+/***************************************************************************
+*   By: Chris Jimenez
+*   Using Matrix Operations
+*   doughnut.js
+* 
+*   ASSIGNMENT 9
+*   Your assignment, due by class on Thursday November 13, is to use your fully 
+*   function implementation of matrices in place of the non-functioning one that 
+*   is in the folder now.
+*****************************************************************************/
 
 var w, h, g;
 
+// create matrix object
 var m = new Matrix4x4();
 
-// DRAW A CURVE ON THE 2D CANVAS.
-
+/**
+*  Draw a curve on the 2D canvas
+*/
 function drawCurve(C) {
    g.beginPath();
    for (var i = 0 ; i < C.length ; i++)
@@ -28,8 +27,9 @@ function drawCurve(C) {
    g.stroke();
 }
 
-// VIEWPORT CONVERTS FROM 3D COORDS TO 2D CANVAS PIXELS.
-
+/**
+* Converts 3D coordinates to 2D canvas pixels
+*/
 function viewport(p) {
    return [ w/2 * p[0] + w/2, h/2 - p[1] * w/2 ];
 }
@@ -46,8 +46,9 @@ function lineTo(p) {
    g.lineTo(xy[0], xy[1]);
 }
 
-// DRAW XYZ AXES.
-
+/**
+*  Draw XYZ axes
+*/
 function drawAxes() {
    g.strokeStyle = 'rgb(255,0,0)';
    g.beginPath();
@@ -68,9 +69,9 @@ function drawAxes() {
    g.stroke();
 }
 
-// GIVEN PARAMETERS [u,v],
-//    COMPUTE POINT ON A TORUS.
-
+/**
+* Compute point on globe given [u.v]
+*/
 function pointOnGlobe(uv) {
    var u = uv[0];
    var v = uv[1];
@@ -81,10 +82,9 @@ function pointOnGlobe(uv) {
             Math.sin(phi)];
 }
 
-// GIVEN PARAMETERS [u,v] AND
-//       TUBE THICKNESS RADIUS r,
-//    COMPUTE POINT ON A TORUS.
-
+/**
+* COmpute point on a torus given [u,v]
+*/
 function pointOnBagel(uv, r) {
    if (r === undefined)
       r = 0.2;
@@ -97,13 +97,13 @@ function pointOnBagel(uv, r) {
                  1+ r * Math.sin(phi) ];
 }
 
-// SET MESH FINE-NESS TO TASTE.
-
+// set mesh
 var nu = 16 * 4;
 var nv = 20 * 4;
 
-// BUILD A PARAMETRIC 3D SHAPE, GIVEN A PARAMETRIC FUNCTION func.
-
+/**
+* Build a parametric 3D shape, given a parametric function func
+*/
 function makeShape(nu, nv, func, extra) {
    var globe = [];
    for (var j = 0 ; j <= nv ; j++) {
@@ -119,7 +119,9 @@ function makeShape(nu, nv, func, extra) {
 }
 
 // RENDER A PARAMETRIC SHAPE AS A COLLECTION OF FOUR SIDED POLYGONS.
-
+/**
+* Render a parametric shape as a collection of four sided polygons
+*/
 function renderShape(shape) {
    var nj = shape.length;
    var ni = shape[0].length;
@@ -133,13 +135,15 @@ function renderShape(shape) {
 
 var bagel = makeShape(nu, nv, pointOnBagel, 0.5);
 
+/**
+* Animate function gets called repeatedly
+*/
 doughnut.animate = function(_g) {
    g = _g;
    w = g.canvas.width;
    h = g.canvas.height;
 
-   // MAKE A NICE SKY BLUE BACKGROUND.
-
+   // background
    g.fillStyle = 'rgb(5,0,100)';
    g.beginPath();
    g.moveTo(0, 0);
@@ -149,28 +153,16 @@ doughnut.animate = function(_g) {
    g.lineTo(0, 0);
    g.fill();
 
-   // ANIMATE THE SCENE.
-
+   // Animate the scene
    m.identity();
    m.rotateX(.5);
    m.rotateY(time / 3);
    m.scale(.3);
-   //m.rotateZ(.5);
 
-   // DRAW THE X,Y,Z COORDINATE AXES.
-
-  // drawAxes();
-
-   // SCALE DOWN A BIT.
-
-   //m.scale(Math.abs(Math.sin(time/3)) + .3);
-
-   // CREATE THE SHAPE.
-
+   // Create the shape
    var shape = makeShape(nu, nv, pointOnBagel, 0.6);
 
-   // PROCEDURALLY DISPLACE THE SHAPE'S VERTICES.
-
+]   // Procedurally displace the shapes vertices
    for (var j = 0 ; j < shape.length ; j++)
       for (var i = 0 ; i < shape[j].length ; i++) {
          var p = shape[j][i];
@@ -180,8 +172,7 @@ doughnut.animate = function(_g) {
          p[2] *= r;
       }
 
-   // DRAW THE SHAPE IN BLACK.
-
+   // draw shape in black
    g.strokeStyle = 'rgb(0,255,10)';
    renderShape(shape);
 }

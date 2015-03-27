@@ -27,12 +27,11 @@ function drawCharacter(){
 */
 function drawBody(turnAngle){
 
-   // DRAW AN UPSIDE TRIANGLE TO REPRESENT THE BOD
-
+   // draw an upside triangle to represent bod
    m.identity();
 
-	// jsut to move our fella lower
-	m.translate(0, -0.1, 0);
+   // jsut to move our fella lower
+   m.translate(0, -0.1, 0);
 
    g.beginPath();
 
@@ -89,13 +88,13 @@ function drawArms(turnAngle){
 
    m.identity();
 
-   // ALWAYS DRAW THE FAR LEG FIRST.
+   // draw far leg first
    var side0 = turnAngle > 0 ? 0 :  1;
    var side1 = turnAngle > 0 ? 2 : -1;
    var dside = turnAngle > 0 ? 1 : -1;
    for (var side = side0 ; side != side1 ; side += dside) {
-		
-		g.beginPath();
+      
+      g.beginPath();
 
 
       var sign = side == 0 ? -1 : 1;

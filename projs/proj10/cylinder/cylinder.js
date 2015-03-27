@@ -22,6 +22,7 @@
 
 var w, h, g;
 
+// create matrix object
 var m = new Matrix4x4();
 
 /**

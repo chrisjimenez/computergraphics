@@ -1,16 +1,13 @@
-/*
-   By: Chris Jimenez
-   Assignment 9 submission
-   Using Matrix Operations
-   globe.js
- 
-   ASSIGNMENT 9
-   Your assignment, due by class on Thursday November 13, is to use your fully 
-   function implementation of matrices in place of the non-functioning one that 
-   is in the folder now.
-*/
-
-
+/***************************************************************************
+*  By: Chris Jimenez
+*  Using Matrix Operations
+*  globe.js
+*
+*  ASSIGNMENT 9
+*  Your assignment, due by class on Thursday November 13, is to use your fully 
+*  function implementation of matrices in place of the non-functioning one that 
+*  is in the folder now.
+****************************************************************************/
 
 // Create matrix object...
 var m = new Matrix4x4();  
@@ -45,8 +42,9 @@ function lineTo(p) {
    g.lineTo(xy[0], xy[1]);
 }
 
-// DRAW XYZ AXES.
-
+/**
+* Draws the XYZ axes
+*/
 function drawAxes() {
    g.strokeStyle = 'rgb(255,0,0)';
    g.beginPath();
@@ -77,13 +75,15 @@ function pointOnGlobe(u, v) {
                Math.sin(phi) ];
    }
 
+/**
+* Animate function gets called repeatedly
+*/
 globe.animate = function(_g) {
    g = _g;
    w = g.canvas.width;
    h = g.canvas.height;
 
-   // MAKE A NICE SKY BLUE BACKGROUND.
-
+   // background
    g.fillStyle = 'rgb(200,240,255)';
    g.beginPath();
    g.moveTo(0, 0);
@@ -94,43 +94,18 @@ globe.animate = function(_g) {
    g.fill();
 
 
-   // ANIMATE THE SCENE.
+   // animate the scene
    m.identity();
-
    m.rotateX(.1);
-
    m.rotateY(time);
    m.scale(.5);
-
-   // DRAW THE X,Y,Z COORDINATE AXES.
 
    drawAxes();
 
    m.scale(.7 + .3 * Math.sin(4 * time), 0, 0);
 
-   // DRAW THE SHAPE IN BLACK.
-
+   // draw shape in black
    g.strokeStyle = 'rgb(0,0,0)';
-
-/*
-   // THIS WAS THE FIRST THING WE DID: CREATE THE EDGES OF A CYLINDER:
-
-   function makeCircle(n) {
-      var curve = [];
-      for (var i = 0 ; i <= n ; i++) {
-         var theta = 2 * Math.PI * i / n;
-         curve.push([ Math.cos(theta), Math.sin(theta), 0]);
-      }
- return curve;
-   }
-
-   var C = makeCircle(32);
-   m.translate(0,0,-1);
-   drawCurve(C);
-   m.translate(0,0, 1);
-   m.translate(0,0, 1);
-   drawCurve(C);
-*/
 
 
 ////////// SECOND VERSION OF DRAWING A GLOBE ////////////////

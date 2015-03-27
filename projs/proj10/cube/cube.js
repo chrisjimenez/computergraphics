@@ -23,6 +23,7 @@
 
 var w, h, g;
 
+// create matrix object
 var m = new Matrix4x4();
 
 // Distance of camera along z-axis

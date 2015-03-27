@@ -1,24 +1,26 @@
-//   By: Chris Jimenez
-//   Assignment 10 submission
-//   Playing with the HTML5 canvas pt. 2
-//   PerlinFunctions.js
- 
-//   ASSIGNMENT 10
-// 		Your assignment, due by class on Thursday November 20, 
-//		is to put together the previous two assignments to create an 
-//		interesting animated scene with fun shapes.
+/***************************************************************************
+*  By: Chris Jimenez
+*  Playing with the HTML5 canvas pt. 2
+*  custom3Dcode.js
+* 
+*  ASSIGNMENT 10
+*   Your assignment, due by class on Thursday November 20, 
+*   is to put together the previous two assignments to create an 
+*   interesting animated scene with fun shapes.
+*
+*   For example, you might make a house, or a tree, or a person, 
+*   or a dog or a car. Try to think of something that tells a little 
+*   story (eg: the sun rises in the morning and the people wake up).
+*   Scaled globes and cylinders are very good for making limbs of 
+*   people and animals and trees.
+*   
+*   Have fun with it!!
+*****************************************************************************/
 
-//		For example, you might make a house, or a tree, or a person, 
-//		or a dog or a car. Try to think of something that tells a little 
-//		story (eg: the sun rises in the morning and the people wake up).
-//		Scaled globes and cylinders are very good for making limbs of 
-//		people and animals and trees.
-//		
-//		Have fun with it!!
-//
 
-
-// DRAWS A CURVE GIVNE C ARRAY
+/**
+* Draw curve C
+*/
 function drawCurve(C) {
    g.beginPath();
    g.fillStyle = 'rgb(100, 100, 0)';
@@ -81,8 +83,9 @@ function pointOnGlobe(u, v) {
 }
 
 
-// BUILD A PARAMETRIC 3D SHAPE, GIVEN A PARAMETRIC FUNCTION func.
-
+/**
+* Build 3D shape, given a parametric function 
+*/
 function makeShape(nu, nv, func, extra) {
    var globe = [];
    for (var j = 0 ; j <= nv ; j++) {
@@ -97,8 +100,9 @@ function makeShape(nu, nv, func, extra) {
    return globe;
 }
 
-// RENDER A PARAMETRIC SHAPE AS A COLLECTION OF FOUR SIDED POLYGONS.
-
+/**
+* Render a parametric shape as a collection of four sided polygons
+*/
 function renderShape(shape) {
    var nj = shape.length;
    var ni = shape[0].length;
