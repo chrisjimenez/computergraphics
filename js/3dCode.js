@@ -1,25 +1,24 @@
 /*******************************************************************
-  By: Chris Jimenez
-  Assignment 10 submission
-  Playing with the HTML5 canvas pt. 2
-  3dCode.js
- 
-  ASSIGNMENT 11
-   Your assignment, due by class on Thursday November 20, 
-   is to put together the previous two assignments to create an 
-   interesting animated scene with fun shapes.
-
-   For example, you might make a house, or a tree, or a person, 
-   or a dog or a car. Try to think of something that tells a little 
-   story (eg: the sun rises in the morning and the people wake up).
-   Scaled globes and cylinders are very good for making limbs of 
-   people and animals and trees.
-   
-   Have fun with it!!
+*  By: Chris Jimenez
+*  Assignment 10 submission
+*  Playing with the HTML5 canvas pt. 2
+*  3dCode.js
+* 
+*  ASSIGNMENT 11
+*   Your assignment, due by class on Thursday November 20, 
+*   is to put together the previous two assignments to create an 
+*   interesting animated scene with fun shapes.
+*
+*   For example, you might make a house, or a tree, or a person, 
+*   or a dog or a car. Try to think of something that tells a little 
+*   story (eg: the sun rises in the morning and the people wake up).
+*   Scaled globes and cylinders are very good for making limbs of 
+*   people and animals and trees.
+*   
+*   Have fun with it!!
 ******************************************************************/
 
 var fl = 6.0; // DISTANCE OF CAMERA ALONG Z AXIS.
-
 
 /**
 * Draw XYZ axes.
@@ -45,7 +44,7 @@ function drawAxes() {
 }
 
 /**
-* DRAW A CURVE ON THE 2D CANVAS.
+* Draw a curve on the 2D canvas
 */
 function drawCurve(C) {
   g.beginPath();
@@ -57,7 +56,9 @@ function drawCurve(C) {
   g.stroke();
 }
 
-// COMPUTE THE AREA OF A POLYGON.
+/**
+* Compute are of polygon P
+*/
 function computeArea(P) {
   var area = 0;
   for (var i = 0 ; i < P.length ; i++) {
@@ -71,25 +72,30 @@ function computeArea(P) {
   return area / 2;
 }
 
-// MATRICES DON'T WORK WITH VERTICES, SO WE NEED A WRAPPER FUNCTION.
+/**
+* Wrapper function since matrics not work with vertices
+*/
 function transform(m, p) {
   var q = m.transform([ p.x, p.y, p.z ]);
   return new Vertex(q[0], q[1], q[2]);
 }
 
-// PROCEDURAL DISPLACEMENT TEXTURE.
+/**
+* Blobby procedural displacement texture
+*/
 function blobby(x, y, z) {
   return .1 * Math.sin(10*x) * Math.sin(10*y) * Math.sin(10*z + 5 * time);
 }
 
-// VIEWPORT CONVERTS FROM 3D COORDS TO 2D CANVAS PIXELS.
+/**
+* Viewport converts 3D coordinates to 2D canvas pixels
+*/
 function viewport(p) {
   var x = p.x;
   var y = p.y;
   var z = p.z;
 
-  // APPLY PERSPECTIVE.
-
+  // apply perspective
   z = fl / (fl - z);
   x *= z;
   y *= z;
@@ -118,25 +124,30 @@ function pointOnGlobe(u, v) {
                Math.sin(phi) ];
 }
 
-// INFLATE THE SHAPE.
+/**
+* Inflate the shape p
+*/
 function inflate(p) {
   var x = p.x, y = p.y, z = p.z;
   var r = Math.sqrt(x * x + y * y + z * z);
   return new Vertex(p.x / r, p.y / r, p.z / r);
 }
 
-// RETURN A NEW VERTEX WHICH IS THE MIDPOINT OF TWO GIVEN VERTICES.
+/**
+* Returns a new vertex which is the midpoint of the two given vertices
+*/
 function midpoint(a, b) {
    return new Vertex( (a.x + b.x) / 2, (a.y + b.y) / 2, (a.z + b.z) / 2 );
 }
 
-// SUBDIVIDE A TRIANGLE, RECURSIVELY.
+/**
+* Subdivide a triangle recursively
+*/
 function subdivide(tri, nLevels) {
   var a = tri[0];
   var b = tri[1];
   var c = tri[2];
 
-  //DECREASE THE LEVEL AND CHECK IF IT IS LESS THAN 0
   if (--nLevels < 0) {
     renderTriangle( [ inflate(a), inflate(b), inflate(c) ]);
   }else{

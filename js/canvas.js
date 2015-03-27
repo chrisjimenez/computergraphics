@@ -1,75 +1,74 @@
+/*********************************************************************
+*  canvas.js
+* 
+*  Contains a couple functions to set up WebGL
+*********************************************************************/
 
-   // BROWSER INDEPENDENT WAY TO RUN A FUNCTION AFTER SOME DELAY.
+// A browser-independent way to call a callback function every 1/60 second.
+window.requestAnimFrame = (function(callback) {
+  return window.requestAnimationFrame ||
+         window.webkitRequestAnimationFrame ||
+         window.mozRequestAnimationFrame ||
+         window.oRequestAnimationFrame ||
+         window.msRequestAnimationFrame ||
+         function(callback) { window.setTimeout(callback, 1000 / 60); }; })();
 
-   window.requestAnimFrame = (function(callback) {
-      return window.requestAnimationFrame ||
-             window.webkitRequestAnimationFrame ||
-             window.mozRequestAnimationFrame ||
-             window.oRequestAnimationFrame ||
-             window.msRequestAnimationFrame ||
-             function(callback) { window.setTimeout(callback, 1000 / 60); }; })();
+/**
+* Prepare all canvases for animated drawing
+*/
+function g_start() {
+  var all = document.getElementsByTagName("*");
+  for (var i = 0 ; i < all.length ; i++)
+      if (all[i].tagName == "CANVAS")
+   g_startCanvas(all[i].id );
+}
 
-   // PREPARE ALL CANVASES FOR ANIMATED DRAWING.
+/**
+* Prepare one canvas for animated drawing
+*/
+function g_startCanvas(canvasName) {
 
-   function g_start() {
-      var all = document.getElementsByTagName("*");
-      for (var i = 0 ; i < all.length ; i++)
-          if (all[i].tagName == "CANVAS")
-	     g_startCanvas(all[i].id );
-   }
+  var canvas = document.getElementById(canvasName);
 
-   // PREPARE ONE CANVAS FOR ANIMATED DRAWING.
+  // get the canvass 2D drawing context
+  canvas.g = canvas.getContext('2d');
+  var g = canvas.g;
+  g.canvas = canvas;
 
-   function g_startCanvas(canvasName) {
+  // osme defaults
+  g.textHeight = 12;
+  g.lineCap = "round";
+  g.lineJoin = "round";
 
-      // USE CANVAS NAME TO GET THE CANVAS FROM THE DOCUMENT.
+  // if a setup function is defined, call it
+  if (canvas.setup !== undefined) {
+     g.clearRect(0, 0, canvas.width, canvas.height);
+     canvas.setup();
+  }
 
-      var canvas = document.getElementById(canvasName);
+  g_tick(canvas);
+}
 
-      // GET THE CANVAS'S 2D DRAWING CONTEXT.
+/**
+* Function loops repeatedly, calling the animate function
+*/
+var g_tick = function(canvas) {
 
-      canvas.g = canvas.getContext('2d');
-      var g = canvas.g;
-      g.canvas = canvas;
+  // if an animate function is defined, call it
+  if (canvas.animate !== undefined) {
 
-      // SET SOME DEFAULTS TO MAKE A NICE DRAWING STYLE.
+     // COMPUTE THE TIME, IN SECONDS, SINCE PAGE LOADED.
 
-      g.textHeight = 12;
-      g.lineCap = "round";
-      g.lineJoin = "round";
+     time = (new Date()).getTime() / 1000 - startTime;
 
-      // IF USER HAS DEFINED A SETUP FUNCTION, CALL IT NOW.
+     // CLEAR THE BACKGROUND EVERY FRAME BEFORE CALLING USER'S ANIMATE FUNCTION.
 
-      if (canvas.setup !== undefined) {
-         g.clearRect(0, 0, canvas.width, canvas.height);
-         canvas.setup();
-      }
+     canvas.g.clearRect(0, 0, canvas.width, canvas.height);
+     canvas.animate(canvas.g);
 
-      g_tick(canvas);
-   }
+     requestAnimFrame(function() { g_tick(canvas); });
+  }
+}
 
-   // FUNCTION THAT LOOPS REPEATEDLY, CALLING USER'S ANIMATE FUNCTION EACH TIME.
-
-   var g_tick = function(canvas) {
-
-      // IF USER HAS DEFINED AN ANIMATE FUNCTION, CALL IT.
-
-      if (canvas.animate !== undefined) {
-
-         // COMPUTE THE TIME, IN SECONDS, SINCE PAGE LOADED.
-
-         time = (new Date()).getTime() / 1000 - startTime;
-
-         // CLEAR THE BACKGROUND EVERY FRAME BEFORE CALLING USER'S ANIMATE FUNCTION.
-
-         canvas.g.clearRect(0, 0, canvas.width, canvas.height);
-         canvas.animate(canvas.g);
-
-	 // CALL THIS g_tick() FUNCTION AGAIN.
-
-         requestAnimFrame(function() { g_tick(canvas); });
-      }
-   }
-
-   var time, startTime = (new Date()).getTime() / 1000;
+var time, startTime = (new Date()).getTime() / 1000;
    
