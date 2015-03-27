@@ -21,6 +21,7 @@
 *************************************************************************/
 var w, h, g;
 
+//cretae matrix object
 var m = new Matrix4x4();
 
 var fl = 6.0; // DISTANCE OF CAMERA ALONG Z AXIS.

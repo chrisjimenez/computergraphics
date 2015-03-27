@@ -22,9 +22,11 @@
 
 var w, h, g;
 
+// create matrix object
 var m = new Matrix4x4();
 
-var fl = 6.0; // DISTANCE OF CAMERA ALONG Z AXIS.
+// distance of cmaera along z-axis
+var fl = 6.0;
 
 var M = 30; // from left to right
 var N = 30; // from top to bottom
