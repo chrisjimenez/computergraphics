@@ -7,31 +7,29 @@
 
     <!-- JS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script src  = "../../js/canvas.js"></script>
+    <script src = "../../js/canvas.js"></script>
+    <script src = "../../js/matrix4x4.js"></script>
+    <script src = "../../js/3dCode.js"></script>
 
     <!-- Stylesheets
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel = "stylesheet" href = "../../css/normalize.css">     
     <link rel = "stylesheet" href = "../../css/main.css">
-
+    
     <title>Chris Jimenez | Computer Graphics Coursework</title>
   </head>
-  <body onload = "g_start()">
 
+  <body onload = "g_start()">
     <div class = "container">
-      <h1>Playing with the HTML5 Canvas</h1>
+      <div style = "text-align:center"class = "page-header">
+        <h1>Creating a Story Using Matrix Operations on the HTML5 Canvas</h1>
+      </div>
 
       <div class = "canvas-container">
-        <canvas id = "proj7" width = "640" height = "640" ></canvas>
-        <script src = "proj7.js"></script>    
+        <canvas id = "torus" width = "640" height = "640" ></canvas>
+        <script src = "torus.js"></script>   
       </div>
 
-      <div class ="description">
-        <p>
-          I used the same rod idea that was covered in class except I made smaller rods that covers the inner canvas. I looped through the inner canvas to set up a spinning rod at every other space(space in this case is 10 pixels). The canvas is interactive with the mouse, so if you click in the canvas, the rods will rotate with respect to the mouse location. This creates a really cool effect where the rods act like a piece of cloth. Try it out!
-        </p>
-      </div>
-
-    </div><!-- /.container -->
+    </div><!-- /.container -->    
   </body>
 </html>
