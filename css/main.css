@@ -1,0 +1,89 @@
+/********************************************************************
+
+*******************************************************************/
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300);
+
+body {
+	font-family: 'Lato', sans-serif;
+	background-color: #BBB1CF;
+}
+
+.header {
+	font-weight: 300;
+	color: white;
+	background-color: #341F5E;
+	box-shadow : 0 0 5px rgba(0,0,0,0.5);
+	padding:5px;
+	margin: 0;
+	text-align: center;
+}
+
+.footer {
+  color: white;
+  text-align: center;
+  background-color: #341F5E;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+/*
+PROJECT LIST + BLOCK
+*/
+.project-block {
+	background-color: #8E7EAC;
+	color: white;
+	text-decoration: none;
+	height: 320px;
+	width: 200px;
+	margin: 12px;
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	box-shadow : 0 0 5px rgba(0,0,0,0.5);
+}
+
+.project-block p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.project-list {
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px;
+}
+
+/*
+PROJECT BLOCK IFRAME
+*/
+
+.container {
+	background-color: #8E7EAC;
+	color: white;
+	font-family: 'Lato'
+}
+
+.container h1 {
+	margin: 0;
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.container .description {
+	padding: 20px;
+}
+
+.canvas-container {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.fancybox-skin {
+	background-color: #8E7EAC;
+}

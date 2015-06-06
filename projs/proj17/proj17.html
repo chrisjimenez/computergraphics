@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE = edge">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src = "../../js/canvas.js"></script>
+    <script src = "../../js/matrix4x4.js"></script>
+    <script src = "custom3DCode.js"></script>
+
+    <!-- Stylesheets
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel = "stylesheet" href = "../../css/normalize.css">     
+    <link rel = "stylesheet" href = "../../css/main.css">
+
+
+    <title>Chris Jimenez | Computer Graphics Coursework</title>
+  </head>
+
+
+  <body onload = "g_start()">
+    <div class = "container">
+      <h1>Creating a Story Using the HTML5 Canvas</h1>
+
+      <div class = "canvas-container">
+        <canvas id = "myCanvas" width = "640" height = "640" ></canvas>
+        <script src = "scene.js"></script>    
+        <script src = "characters.js"></script>    
+        <script src = "myCanvas.js"></script>    
+      </div>
+
+      <div class="description">
+        <p>
+          The main idea about this assignment was to have fun and to use what we have learned about the HTML5 canvas and matrix operations to create a little story! So I created a little story about a little triangular character being chased by a creature.
+        </p>
+
+        <p>
+          The character, enemy, and background scene turn at the same rate(which is dependent on time) and at the same angle. So as our friend gets chased down the sidewalk, we can see the scenery behind him! The bright light above represents the sun, which moves with the background scene.
+        </p>
+
+        <p>
+          I had some fun with this assignment! But it was surprisingly difficult positioning everything on the canvas using the matrix operations.
+        </p>
+      </div><!-- /.description -->
+    </div><!-- /.container -->
+  </body>
+</html>

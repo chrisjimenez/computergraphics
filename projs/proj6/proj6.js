@@ -155,52 +155,6 @@ var fragmentShader = [
 ,'  uniform vec3  u_mouse;'
 ,'  varying vec3  v_pos;'
 
-/**
-* Funal color with reflection given sphere coordinates.
-*/
-,' vec3 finalColorWithReflection(vec4 sphereCoords, vec3 incidentVec, vec3 a, vec3 d, vec3 s, vec3 norm){'
-
-//       calulate reflection vector...
-//       R = (2 x N x (N . I)) - I
-,'       vec3 reflectionVec = (2.0 * norm * dot(norm, incidentVec)) - incidentVec;'
-
-//       add ambient to final color
-,'       vec3 color = a * turbulence(norm) * noise(norm);'
-
-//       calculate diffuse component..
-,'       vec3 diffuse = max(0.0, dot(norm, u_lightDir[0])) * u_lightRGB[0] +'
-,'                      max(0.0, dot(norm, u_lightDir[1])) * u_lightRGB[1];'
-,'       color += d * diffuse * 2.0 * turbulence(norm) * noise(norm);'
-
-//       calculate specular component..
-,'       float p = 200.0;'
-,'       vec3 specular = pow(dot(reflectionVec, u_lightDir[0]), p) * u_lightRGB[0] +'
-,'                       pow(dot(reflectionVec, u_lightDir[1]), p) * u_lightRGB[1];'
-
-,'       color +=  s * specular ;'
-
-,'       return color;'
-,' }'
-
-
-/**
-* Function that returns t the distance along the ray
-* that takes three arguments: a ray origin V, a ray 
-* direction W, and a vec4 containing the cx,cy,cz,r of the sphere.
-*/
-,'  float distAlongRay(vec4 v, vec4 w, vec4 sphere){'
-//    calculate b & c for ray distance calulation....
-,'    float b = dot((v - sphere), w);'
-,'    float c = dot((v - sphere), (v - sphere)) - pow(sphere.w, 2.0);'
-
-//    if result is imaginary
-,'    if((b * b) - c < 0.0){'
-,'      return 100000.0;'
-,'    }else{'
-,'      return -b - sqrt(b*b-c);'
-,'    }'
-,'  }'
-
 //  CODE BY KEN PERLIN-------------------------------------------------------------------------------
 ,'   vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }'
 ,'   vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }'
@@ -263,6 +217,53 @@ var fragmentShader = [
 ,'      return f;'
 ,'   }'
 //  -----------------------------------------------------------------------------------------------
+
+/**
+* Funal color with reflection given sphere coordinates.
+*/
+,' vec3 finalColorWithReflection(vec4 sphereCoords, vec3 incidentVec, vec3 a, vec3 d, vec3 s, vec3 norm){'
+
+//       calulate reflection vector...
+//       R = (2 x N x (N . I)) - I
+,'       vec3 reflectionVec = (2.0 * norm * dot(norm, incidentVec)) - incidentVec;'
+
+//       add ambient to final color
+,'       vec3 color = a * turbulence(norm) * noise(norm);'
+
+//       calculate diffuse component..
+,'       vec3 diffuse = max(0.0, dot(norm, u_lightDir[0])) * u_lightRGB[0] +'
+,'                      max(0.0, dot(norm, u_lightDir[1])) * u_lightRGB[1];'
+,'       color += d * diffuse * 2.0 * turbulence(norm) * noise(norm);'
+
+//       calculate specular component..
+,'       float p = 200.0;'
+,'       vec3 specular = pow(dot(reflectionVec, u_lightDir[0]), p) * u_lightRGB[0] +'
+,'                       pow(dot(reflectionVec, u_lightDir[1]), p) * u_lightRGB[1];'
+
+,'       color +=  s * specular ;'
+
+,'       return color;'
+,' }'
+
+
+/**
+* Function that returns t the distance along the ray
+* that takes three arguments: a ray origin V, a ray 
+* direction W, and a vec4 containing the cx,cy,cz,r of the sphere.
+*/
+,'  float distAlongRay(vec4 v, vec4 w, vec4 sphere){'
+//    calculate b & c for ray distance calulation....
+,'    float b = dot((v - sphere), w);'
+,'    float c = dot((v - sphere), (v - sphere)) - pow(sphere.w, 2.0);'
+
+//    if result is imaginary
+,'    if((b * b) - c < 0.0){'
+,'      return 100000.0;'
+,'    }else{'
+,'      return -b - sqrt(b*b-c);'
+,'    }'
+,'  }'
+
 
 
 /**
