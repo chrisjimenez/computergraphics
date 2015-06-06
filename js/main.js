@@ -15,11 +15,11 @@ var projectBlockTitles = ["Using GLSL to Write WebGL Shaders part 1",
 "Using Matrix Operations on the Canvas part 1",
 "Using Matrix Operations on the Canvas part 2", 
 "Using Matrix Operations on the Canvas part 3",
-"Using a List of Vertices and Triangular Faces to Draw 3D Shapes",
-"Creating a Story Using Matrix Operations on the HTML5 Canvas part 1",
-"Creating a Story Using Matrix Operations on the HTML5 Canvas part 2",
-"Creating a Story Using Matrix Operations on the HTML5 Canvas part 3",
-"Creating a Story Using Matrix Operations on the HTML5 Canvas part 4",
+"Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 1",
+"Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 2",
+"Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 3",
+"Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 4",
+"Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 5",
 "Creating a Story Using the HTML5 Canvas"]
 
 // check if doc is ready
