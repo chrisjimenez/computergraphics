@@ -20,7 +20,7 @@ var projectBlockTitles = ["Using GLSL to Write WebGL Shaders part 1",
 "Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 3",
 "Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 4",
 "Using a List of Vertices and Triangular Faces to Draw 3D Shapes part 5",
-"Creating a Story Using the HTML5 Canvas"]
+"Creating a Story Using the HTML5 Canvas"];
 
 // check if doc is ready
 $(document).ready(function(){
@@ -32,12 +32,12 @@ $(document).ready(function(){
 
 		var $newProjectBlock = $('<a class="fancybox fancybox.iframe" href="projs/proj'+i+'/proj'+i+'.html"><div></div></a>').addClass('project-block');
 		$newProjectBlock.append('<img src = "projs/proj'+i+'/screenshot.png"></img>');
-		$newProjectBlock.append('<p>'+projectBlockTitles[i-1]+'</p>')
+		$newProjectBlock.append('<p>'+projectBlockTitles[i-1]+'</p>');
 
 		$projectList.append($newProjectBlock);
 	}
 
-	var $projectBlock = $('.fancybox')
+	var $projectBlock = $('.fancybox');
 	$projectBlock.fancybox();
 
 	// expanding project block on hover
